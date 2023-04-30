@@ -4,17 +4,14 @@
     "plugin:import/errors",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
+    "plugin:react-hooks/recommended",
     "prettier"
   ],
   "rules": {
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off"
   },
-  "plugins": [
-    "react",
-    "import",
-    "jsx-a11y"
-  ],
+  "plugins": ["react", "import", "jsx-a11y"],
   "parserOptions": {
     // Ensure that we can use async/await
     "ecmaVersion": 2022,
@@ -37,10 +34,7 @@
     },
     "import/resolver": {
       "node": {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
+        "extensions": [".js", ".jsx"]
       }
     }
   }
