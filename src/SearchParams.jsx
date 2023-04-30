@@ -74,6 +74,7 @@ const SearchParams = () => {
         </label>
         <button>Submit</button>
       </form>
+      {/* Results component is expecting a pets prop { props } */}
       <Results pets={pets} />
     </div>
   );
