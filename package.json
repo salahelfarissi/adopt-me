@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "description": "This app follows along from the Frontend Masters course, Complete Intro to React, v8 by Brian Holt.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build:client": "vite build --outDir ../dist/client",
+    "build:server": "vite build --outDir ../dist/server --ssr ServerApp.jsx",
+    "build": "npm run build:client && npm run build:server",
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
