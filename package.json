@@ -10,8 +10,8 @@
     "build:server": "vite build --outDir ../dist/server --ssr ServerApp.jsx",
     "build": "npm run build:client && npm run build:server",
     "preview": "vite preview",
-    "format": "prettier --write \"src/**/*.{js,jsx}\"",
-    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet",
     "start": "node server.js"
   },
   "keywords": [],
