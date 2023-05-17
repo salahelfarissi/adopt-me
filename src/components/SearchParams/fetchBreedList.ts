@@ -3,7 +3,7 @@ import { BreedAPIResponse, Animal } from '../Details/APIResponsesTypes';
 
 const fetchBreedList: QueryFunction<
   BreedAPIResponse,
-  ['Breeds', Animal]
+  ['breeds', Animal]
 > = async ({ queryKey }) => {
   const animal = queryKey[1];
 
