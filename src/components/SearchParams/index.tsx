@@ -10,21 +10,22 @@ import useBreedList from './useBreedList';
 import fetchSearch from './fetchSearch';
 import Results from '../Results';
 import AdoptedPetContext from '../../AdoptedPetContext';
+import { Animal } from '../Details/APIResponsesTypes';
 
-const ANIMALS = ['bird', 'cat', 'dog', 'rabbit', 'reptile'];
+const ANIMALS: Animal[] = ['bird', 'cat', 'dog', 'rabbit', 'reptile'];
 
 const SearchParams = () => {
   const [requestParams, setRequestParams] = useState({
     location: '',
-    animal: '',
+    animal: '' as Animal,
     breed: '',
   });
   const [adoptedPet] = useContext(AdoptedPetContext);
-  const [animal, setAnimal] = useState('');
+  const [animal, setAnimal] = useState('' as Animal);
   const [breeds] = useBreedList(animal);
   const [isPending, startTransition] = useTransition();
 
-  const results = useQuery(['pets', requestParams], fetchSearch);
+  const results = useQuery(['search', requestParams], fetchSearch);
   const pets = results?.data?.pets ?? [];
   const deferredPets = useDeferredValue(pets);
   const renderedPets = useMemo(
@@ -37,11 +38,11 @@ const SearchParams = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          const formData = new FormData(e.target);
+          const formData = new FormData(e.currentTarget);
           const obj = {
-            location: formData.get('location') ?? '',
-            animal: formData.get('animal') ?? '',
-            breed: formData.get('breed') ?? '',
+            location: formData.get('location')?.toString() ?? '',
+            animal: (formData.get('animal')?.toString() as Animal) ?? '',
+            breed: formData.get('breed')?.toString() ?? '',
           };
           startTransition(() => {
             setRequestParams(obj);
@@ -62,7 +63,8 @@ const SearchParams = () => {
           <select
             id="animal"
             value={animal}
-            onChange={(e) => setAnimal(e.target.value)}
+            onChange={(e) => setAnimal(e.target.value as Animal)}
+            onBlur={(e) => setAnimal(e.target.value as Animal)}
           >
             <option />
             {ANIMALS.map((animal) => (
