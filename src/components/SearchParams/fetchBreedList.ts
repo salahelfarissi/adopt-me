@@ -1,4 +1,10 @@
-const fetchBreedList = async ({ queryKey }) => {
+import { QueryFunction } from '@tanstack/react-query';
+import { BreedAPIResponse, Animal } from '../Details/APIResponsesTypes';
+
+const fetchBreedList: QueryFunction<
+  BreedAPIResponse,
+  ['Breeds', Animal]
+> = async ({ queryKey }) => {
   const animal = queryKey[1];
 
   if (!animal) return [];
