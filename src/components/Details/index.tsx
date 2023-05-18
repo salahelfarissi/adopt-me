@@ -16,10 +16,9 @@ const Details = () => {
     throw new Error('ID required');
   }
 
-  const results = useQuery<PetAPIResponse>(['details', id], fetchPet);
-
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+  const results = useQuery<PetAPIResponse>(['details', id], fetchPet);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setAdoptedPet] = useContext(AdoptedPetContext);
 

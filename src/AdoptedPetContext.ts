@@ -3,14 +3,14 @@ import { Pet } from './components/Details/APIResponsesTypes';
 
 const AdoptedPetContext = createContext<[Pet, (adoptedPet: Pet) => void]>([
   {
-    id: 0,
-    name: '',
-    animal: 'bird',
-    breed: '',
+    id: 1337,
+    name: 'Fido',
+    animal: 'dog',
+    description: 'Lorem ipsum',
+    breed: 'Beagle',
     images: [],
-    description: '',
-    city: '',
-    state: '',
+    city: 'Seattle',
+    state: 'WA',
   },
   () => {},
 ]);
