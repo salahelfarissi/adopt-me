@@ -15,18 +15,24 @@ import { Animal } from '../APIResponsesTypes';
 const ANIMALS: Animal[] = ['bird', 'cat', 'dog', 'rabbit', 'reptile'];
 
 const SearchParams = () => {
+  // Keep track of adopted pet
+  const [adoptedPet] = useContext(AdoptedPetContext);
+
+  // Custom hook for fetching breed list based on animal
+  const [animal, setAnimal] = useState('' as Animal);
+  const [breeds] = useBreedList(animal);
+
+  // Fetch search results
   const [requestParams, setRequestParams] = useState({
     location: '',
     animal: '' as Animal,
     breed: '',
   });
-  const [adoptedPet] = useContext(AdoptedPetContext);
-  const [animal, setAnimal] = useState('' as Animal);
-  const [breeds] = useBreedList(animal);
-  const [isPending, startTransition] = useTransition();
-
   const results = useQuery(['search', requestParams], fetchSearch);
   const pets = results?.data?.pets ?? [];
+
+  // Low priority rendering with useDeferredValue and useTransition
+  const [isPending, startTransition] = useTransition();
   const deferredPets = useDeferredValue(pets);
   const renderedPets = useMemo(
     () => <Results pets={deferredPets} />,
