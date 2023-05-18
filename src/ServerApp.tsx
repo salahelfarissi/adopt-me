@@ -2,13 +2,11 @@
 import { renderToPipeableStream } from 'react-dom/server';
 // StaticRouter is basically the same as BrowserRouter, but it runs in Node
 import { StaticRouter } from 'react-router-dom/server';
-import App from './App';
+// import App from './App';
 
-export default function render(url, opts) {
+export default function render(url: string, opts: Record<string, unknown>) {
   const stream = renderToPipeableStream(
-    <StaticRouter location={url}>
-      <App />
-    </StaticRouter>,
+    <StaticRouter location={url}>{/* <App /> */}</StaticRouter>,
     opts,
   );
   return stream;
