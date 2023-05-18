@@ -6,6 +6,7 @@ const SearchParams = lazy(() => import('./components/SearchParams'));
 const Details = lazy(() => import('./components/Details'));
 
 import AdoptedPetContext from './AdoptedPetContext';
+import { Pet } from './components/Details/APIResponsesTypes';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -17,7 +18,7 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
-  const adoptedPet = useState(null);
+  const adoptedPet = useState(null as Pet | null);
   return (
     <QueryClientProvider client={queryClient}>
       <Suspense

@@ -5,7 +5,6 @@ import fetchPet from './fetchPet';
 import Carousel from '../Carousel';
 import ErrorBoundary from './ErrorBoundary';
 import AdoptedPetContext from '../../AdoptedPetContext';
-import { PetAPIResponse } from './APIResponsesTypes';
 
 const Modal = lazy(() => import('../Modal'));
 
