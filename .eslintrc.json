@@ -10,17 +10,15 @@
     "prettier"
   ],
   "rules": {
-    "react/prop-types": "off",
-    "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/no-empty-function": "off"
+    "react/prop-types": 0,
+    "react/react-in-jsx-scope": 0,
+    "@typescript-eslint/no-empty-function": 0
   },
   "plugins": ["react", "import", "jsx-a11y", "@typescript-eslint"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json",
-    // Ensure that we can use async/await
     "ecmaVersion": 2022,
-    // Ensure that we can use import/export
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
@@ -28,9 +26,7 @@
   },
   "env": {
     "es6": true,
-    // Don't give me an error if you see fetch
     "browser": true,
-    // Don't give me an error if you see __dirname
     "node": true
   },
   "settings": {
