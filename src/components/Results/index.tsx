@@ -1,5 +1,5 @@
 import Pet from './Pet';
-import { Pet as PetType } from '../Details/APIResponsesTypes';
+import { Pet as PetType } from '../APIResponsesTypes';
 
 const Results = ({ pets }: { pets: PetType[] }) => {
   return (

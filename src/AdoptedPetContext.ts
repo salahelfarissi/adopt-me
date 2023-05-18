@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { Pet } from './components/Details/APIResponsesTypes';
+import { Pet } from './components/APIResponsesTypes';
 
 // This is a context that will be used to store the pet that the user has
 // adopted. It is initialized with a dummy value so that TypeScript does not

@@ -6,7 +6,7 @@ const SearchParams = lazy(() => import('./components/SearchParams'));
 const Details = lazy(() => import('./components/Details'));
 
 import AdoptedPetContext from './AdoptedPetContext';
-import { Pet } from './components/Details/APIResponsesTypes';
+import { Pet } from './components/APIResponsesTypes';
 import { createRoot } from 'react-dom/client';
 
 const queryClient = new QueryClient({

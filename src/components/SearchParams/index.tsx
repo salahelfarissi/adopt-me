@@ -10,7 +10,7 @@ import useBreedList from './useBreedList';
 import fetchSearch from './fetchSearch';
 import Results from '../Results';
 import AdoptedPetContext from '../../AdoptedPetContext';
-import { Animal } from '../Details/APIResponsesTypes';
+import { Animal } from '../APIResponsesTypes';
 
 const ANIMALS: Animal[] = ['bird', 'cat', 'dog', 'rabbit', 'reptile'];
 
