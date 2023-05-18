@@ -21,9 +21,9 @@ const queryClient = new QueryClient({
 const App = () => {
   const adoptedPet = useState(null as Pet | null);
   return (
-    <BrowserRouter>
-      <AdoptedPetContext.Provider value={adoptedPet}>
-        <QueryClientProvider client={queryClient}>
+    <AdoptedPetContext.Provider value={adoptedPet}>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
           <Suspense
             fallback={
               <div className="loading-pane">
@@ -39,9 +39,9 @@ const App = () => {
               <Route path="/" element={<SearchParams />}></Route>
             </Routes>
           </Suspense>
-        </QueryClientProvider>
-      </AdoptedPetContext.Provider>
-    </BrowserRouter>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </AdoptedPetContext.Provider>
   );
 };
 
