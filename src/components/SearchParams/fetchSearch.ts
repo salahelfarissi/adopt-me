@@ -1,17 +1,17 @@
 import { QueryFunction } from '@tanstack/react-query';
-import { PetAPIResponse, Animal } from '../Details/APIResponsesTypes';
+import { PetAPIResponse } from '../Details/APIResponsesTypes';
 
 const fetchSearch: QueryFunction<
   PetAPIResponse,
   [
     'search',
     {
-      animal: Animal;
       location: string;
+      animal: string;
       breed: string;
     },
   ]
-> = async ({ queryKey }) => {
+> = async function ({ queryKey }) {
   const { animal, location, breed } = queryKey[1];
 
   const res = await fetch(
