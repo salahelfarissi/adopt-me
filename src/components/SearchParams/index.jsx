@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { all } from './searchParamsSlice';
 import { useSearchQuery } from '../Details/petApiService';
 
+const ANIMALS = ['bird', 'cat', 'dog', 'rabbit', 'reptile'];
+
 const SearchParams = () => {
   // Get breed list for the selected animal
   const [animal, setAnimal] = useState('');
