@@ -1,24 +1,28 @@
 import { useState, useDeferredValue, useMemo, useTransition } from 'react';
-import { useQuery } from '@tanstack/react-query';
 import useBreedList from './useBreedList';
-import fetchSearch from './fetchSearch';
 import Results from '../Results';
 import { useSelector, useDispatch } from 'react-redux';
 import { all } from './searchParamsSlice';
+import { useSearchQuery } from '../Details/petApiService';
 
 const ANIMALS = ['bird', 'cat', 'dog', 'rabbit', 'reptile'];
 
 const SearchParams = () => {
-  const adoptedPet = useSelector((state) => state.adoptedPet.value);
-  const requestParams = useSelector((state) => state.searchParams.value);
-  const dispatch = useDispatch();
-
+  // Get breed list for the selected animal
   const [animal, setAnimal] = useState('');
   const [breeds] = useBreedList(animal);
-  const [isPending, startTransition] = useTransition();
 
-  const results = useQuery(['pets', requestParams], fetchSearch);
-  const pets = results?.data?.pets ?? [];
+  // Get the value of the adoptedPet state and the searchParams state
+  const adoptedPet = useSelector((state) => state.adoptedPet.value);
+  const searchParams = useSelector((state) => state.searchParams.value);
+
+  const dispatch = useDispatch();
+
+  let { data: pets } = useSearchQuery(searchParams);
+  pets = pets ?? [];
+
+  // Low priority rendering
+  const [isPending, startTransition] = useTransition();
   const deferredPets = useDeferredValue(pets);
   const renderedPets = useMemo(
     () => <Results pets={deferredPets} />,
