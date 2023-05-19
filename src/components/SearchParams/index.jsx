@@ -3,17 +3,16 @@ import { useQuery } from '@tanstack/react-query';
 import useBreedList from './useBreedList';
 import fetchSearch from './fetchSearch';
 import Results from '../Results';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { all } from './searchParamsSlice';
 
 const ANIMALS = ['bird', 'cat', 'dog', 'rabbit', 'reptile'];
 
 const SearchParams = () => {
   const adoptedPet = useSelector((state) => state.adoptedPet.value);
-  const [requestParams, setRequestParams] = useState({
-    location: '',
-    animal: '',
-    breed: '',
-  });
+  const requestParams = useSelector((state) => state.searchParams.value);
+  const dispatch = useDispatch();
+
   const [animal, setAnimal] = useState('');
   const [breeds] = useBreedList(animal);
   const [isPending, startTransition] = useTransition();
@@ -38,7 +37,7 @@ const SearchParams = () => {
             breed: formData.get('breed') ?? '',
           };
           startTransition(() => {
-            setRequestParams(obj);
+            dispatch(all(obj));
           });
         }}
       >
