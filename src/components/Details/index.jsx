@@ -9,25 +9,11 @@ import { useGetPetQuery } from './petApiService';
 const Modal = lazy(() => import('../Modal'));
 
 const Details = () => {
-<<<<<<< HEAD:src/components/Details/index.tsx
-  const { id } = useParams();
-
-  if (!id) {
-    throw new Error('ID required');
-  }
-
-  const [showModal, setShowModal] = useState(false);
-  const navigate = useNavigate();
-  const results = useQuery(['details', id], fetchPet);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, setAdoptedPet] = useContext(AdoptedPetContext);
-=======
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
   const { isLoading, data: pet } = useGetPetQuery(id);
->>>>>>> redux:src/components/Details/index.jsx
 
   if (isLoading) {
     return (
@@ -37,14 +23,6 @@ const Details = () => {
     );
   }
 
-<<<<<<< HEAD:src/components/Details/index.tsx
-  const pet = results?.data?.pets[0];
-  if (!pet) {
-    throw new Error('No pet found');
-  }
-
-=======
->>>>>>> redux:src/components/Details/index.jsx
   return (
     <div className="details">
       <Carousel images={pet.images} />

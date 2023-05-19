@@ -1,37 +1,11 @@
 import { useState, useDeferredValue, useMemo, useTransition } from 'react';
 import useBreedList from './useBreedList';
 import Results from '../Results';
-<<<<<<< HEAD:src/components/SearchParams/index.tsx
-import AdoptedPetContext from '../../AdoptedPetContext';
-import { Animal } from '../APIResponsesTypes';
-=======
 import { useSelector, useDispatch } from 'react-redux';
 import { all } from './searchParamsSlice';
 import { useSearchQuery } from '../Details/petApiService';
->>>>>>> redux:src/components/SearchParams/index.jsx
-
-const ANIMALS: Animal[] = ['bird', 'cat', 'dog', 'rabbit', 'reptile'];
 
 const SearchParams = () => {
-<<<<<<< HEAD:src/components/SearchParams/index.tsx
-  // Keep track of adopted pet
-  const [adoptedPet] = useContext(AdoptedPetContext);
-
-  // Custom hook for fetching breed list based on animal
-  const [animal, setAnimal] = useState('' as Animal);
-  const [breeds] = useBreedList(animal);
-
-  // Fetch search results
-  const [requestParams, setRequestParams] = useState({
-    location: '',
-    animal: '' as Animal,
-    breed: '',
-  });
-  const results = useQuery(['search', requestParams], fetchSearch);
-  const pets = results?.data?.pets ?? [];
-
-  // Low priority rendering with useDeferredValue and useTransition
-=======
   // Get breed list for the selected animal
   const [animal, setAnimal] = useState('');
   const [breeds] = useBreedList(animal);
@@ -46,7 +20,6 @@ const SearchParams = () => {
   pets = pets ?? [];
 
   // Low priority rendering
->>>>>>> redux:src/components/SearchParams/index.jsx
   const [isPending, startTransition] = useTransition();
   const deferredPets = useDeferredValue(pets);
   const renderedPets = useMemo(
@@ -62,7 +35,7 @@ const SearchParams = () => {
           const formData = new FormData(e.currentTarget);
           const obj = {
             location: formData.get('location')?.toString() ?? '',
-            animal: (formData.get('animal')?.toString() as Animal) ?? '',
+            animal: formData.get('animal')?.toString() ?? '',
             breed: formData.get('breed')?.toString() ?? '',
           };
           startTransition(() => {
@@ -84,8 +57,8 @@ const SearchParams = () => {
           <select
             id="animal"
             value={animal}
-            onChange={(e) => setAnimal(e.target.value as Animal)}
-            onBlur={(e) => setAnimal(e.target.value as Animal)}
+            onChange={(e) => setAnimal(e.target.value)}
+            onBlur={(e) => setAnimal(e.target.value)}
           >
             <option />
             {ANIMALS.map((animal) => (
