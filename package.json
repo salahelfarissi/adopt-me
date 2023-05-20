@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
-    "test": "vitest"
+    "test": "vitest",
+    "test:coverage": "vitest --coverage"
   },
   "keywords": [],
   "author": "Brian Holt",
@@ -17,6 +18,7 @@
   "devDependencies": {
     "@testing-library/react": "^13.4.0",
     "@vitejs/plugin-react": "2.1.0",
+    "@vitest/coverage-c8": "^0.31.1",
     "eslint": "8.24.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.26.0",
@@ -26,7 +28,6 @@
     "happy-dom": "^7.6.0",
     "prettier": "2.7.1",
     "vite": "3.1.4",
-    "vitest": "^0.24.3",
     "vitest-fetch-mock": "^0.2.1"
   },
   "dependencies": {
@@ -35,6 +36,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-redux": "8.0.4",
-    "react-router-dom": "6.4.1"
+    "react-router-dom": "6.4.1",
+    "vitest": "^0.31.1"
   }
 }
